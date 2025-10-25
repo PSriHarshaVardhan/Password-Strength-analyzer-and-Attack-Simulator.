@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Password Strength & Attack Simulator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" aria-labelledby="title">
+      <h2 id="title">Password Strength & Attack Simulator</h2>
+
+      <div class="row">
+        <label for="password" class="sr">Password</label>
+        <div class="input-group">
+          <input type="password" id="password" placeholder="Enter your password" aria-describedby="strength-text" />
+          <button id="toggle-visibility" class="icon-btn" aria-pressed="false" title="Show/Hide password">👁️</button>
+          <button id="copy-password" class="icon-btn" title="Copy password">📋</button>
+        </div>
+        <div id="strength-wrap">
+          <div id="strength-bar" aria-hidden="true"><div id="strength-fill"></div></div>
+          <div class="strength-meta">
+            <span id="strength-text">Type a password</span>
+            <span id="entropy-text" title="Entropy (bits) — higher is stronger">· 0 bits</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="message" class="checks" aria-live="polite">
+        <h3 class="sr">Password requirements</h3>
+        <ul>
+          <li id="letter" class="invalid"><span class="dot">✗</span> Lowercase letter</li>
+          <li id="capital" class="invalid"><span class="dot">✗</span> Uppercase letter</li>
+          <li id="number" class="invalid"><span class="dot">✗</span> Number</li>
+          <li id="special" class="invalid"><span class="dot">✗</span> Special character (@, #, $, %, &amp;, !, ?, *)</li>
+          <li id="length" class="invalid"><span class="dot">✗</span> At least <strong>8</strong> characters</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <button id="simulate" class="primary">Simulate Attack</button>
+        <button id="suggest" class="secondary" title="Generate a strong suggestion">Generate Suggestion</button>
+      </div>
+
+      <div id="attack-panel" class="attack-panel" aria-live="polite">
+        <div class="attack-meta">
+          <div id="attack-result">No simulation yet</div>
+          <div id="attack-time" class="muted"></div>
+        </div>
+        <div id="attack-bar" class="attack-bar" aria-hidden="true"><div id="attack-fill"></div></div>
+      </div>
+
+      <footer class="muted small">Demo only — never submit real passwords. Times are estimates.</footer>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

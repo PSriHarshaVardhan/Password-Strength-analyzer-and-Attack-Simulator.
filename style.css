@@ -1,0 +1,273 @@
+:root {
+  --bg: #050505;
+  --card: #0a0a0a;
+  --muted: #808080;
+  --accent: #00b3ff;
+  --good: #00ff99;
+  --warn: #ffaa00;
+  --bad: #ff3366;
+  --radius: 12px;
+  --font: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --glass: rgba(255,255,255,0.05);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: radial-gradient(circle at 20% 20%, #0a0a0a 0%, #000 100%);
+  color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Container card */
+.wrap { width: 100%; max-width: 760px; padding: 12px; }
+
+.card {
+  background: linear-gradient(145deg, #0d0d0d, #0a0a0a);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow:
+    0 0 15px rgba(0, 255, 255, 0.05),
+    inset 0 0 8px rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+}
+
+/* Headings */
+h2 {
+  margin: 0 0 18px 0;
+  font-weight: 600;
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(0, 179, 255, 0.4);
+}
+
+.small { font-size: 12px; }
+.muted { color: var(--muted); }
+
+/* Input styling */
+.row { margin-bottom: 16px; }
+.input-group { display: flex; gap: 8px; align-items: center; }
+
+input[type="password"], input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  background: #111;
+  border: 1px solid #222;
+  color: #eaeaea;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  font-size: 15px;
+}
+
+input::placeholder {
+  color: #555;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 179, 255, 0.3);
+}
+
+/* Icon buttons */
+.icon-btn {
+  background: #111;
+  border: 1px solid #222;
+  color: #aaa;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 40px;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: #0c0c0c;
+  color: var(--accent);
+  box-shadow: 0 0 6px rgba(0, 179, 255, 0.3);
+}
+
+/* Strength bar */
+#strength-wrap { margin-top: 10px; }
+
+#strength-bar {
+  width: 100%;
+  height: 12px;
+  background: #111;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+
+#strength-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--bad), var(--warn), var(--good));
+  transition: width 450ms ease-in-out, background 300ms;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+}
+
+.strength-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+#strength-text {
+  font-weight: 600;
+  color: #eee;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+}
+
+/* Checklist */
+.checks ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.checks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #0f0f0f;
+  border: 1px solid #151515;
+  color: var(--muted);
+  transition: transform 0.1s, color 0.2s;
+}
+
+.checks li.valid {
+  color: var(--good);
+  text-shadow: 0 0 6px rgba(0, 255, 153, 0.4);
+}
+
+.checks li.invalid {
+  color: var(--bad);
+}
+
+.checks li .dot {
+  width: 22px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Password match text */
+#match {
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+#match.valid {
+  color: var(--good);
+}
+
+#match.invalid {
+  color: var(--bad);
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+button.primary {
+  background: linear-gradient(90deg, #0072ff, #00b3ff);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(0, 179, 255, 0.25);
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+
+button.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 25px rgba(0, 179, 255, 0.4);
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid #222;
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+button.secondary:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Attack simulation panel */
+.attack-panel {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #0d0d0d;
+  border: 1px solid #181818;
+}
+
+.attack-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+#attack-result {
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 0 6px rgba(0, 179, 255, 0.3);
+}
+
+.attack-bar {
+  height: 10px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: #111;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+
+#attack-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--bad), var(--warn), var(--good));
+  transition: width 800ms linear;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.25);
+}
+
+/* Accessibility helpers */
+.sr {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .card { padding: 18px; }
+  .actions { flex-direction: column; }
+}
